@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('front', 'Front\FrontLoginController@index');
-Route::get('front/login', 'Front\FrontLoginController@index');
-
+Route::get('front/register/form',['as' => 'front.register.form','uses'=> 'Front\FrontRegisterController@showRegistrationForm']);
+Route::post('front/register',['as'=> 'front.register','uses'=>'Front\FrontRegisterController@register']);
+Route::get('front/login/form',['as'=>'front.login.form','uses','uses'=>'Front\FrontLoginController@showLoginForm']);
+Route::post('front/login',['as'=>'front.login','uses'=>'Front\FrontLoginController@login']);
+Route::get('admin', 'Front\FrontIndex@admin');

@@ -7,20 +7,38 @@ namespace App\Http\Controllers\Front;
  * Time: 18:25
  */
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 class FrontLoginController extends Controller
 {
-    public function index()
+    use AuthenticatesUsers;
+    protected $redirectTo = '/admin';
+
+    public function __construct()
     {
-        return view('front.register');
+        $this->middleware('guest.front');
     }
 
-    public function register()
-    {
 
+
+    
+    //加载登录页面
+    public function showLoginForm()
+    {
+        return view('front.login', ['except' => 'logout']);
     }
 
-    public function login()
+    /*public function login()
     {
 
+    }*/
+
+    //自定义认证驱动
+    protected function guard()
+    {
+        return Auth::guard('front');
     }
+
+    
 }

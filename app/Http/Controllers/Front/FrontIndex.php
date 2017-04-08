@@ -7,9 +7,18 @@
  */
 
 namespace App\Http\Controllers\Front;
+use App\Http\Controllers\Controller;
 
-
-class FrontIndex
+class FrontIndex extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('front:front');
+    }
 
+    //加载后台首页
+    public function admin()
+    {
+        return view('front.admin');
+    }
 }
