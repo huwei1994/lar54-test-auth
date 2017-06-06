@@ -24,3 +24,6 @@ Route::post('front/register',['as'=> 'front.register','uses'=>'Front\FrontRegist
 Route::get('front/login/form',['as'=>'front.login.form','uses','uses'=>'Front\FrontLoginController@showLoginForm']);
 Route::post('front/login',['as'=>'front.login','uses'=>'Front\FrontLoginController@login']);
 Route::get('admin', 'Front\FrontIndex@admin');
+
+Route::get('test/slot', 'TestOther\TestOtherController@index');
+Route::get('test/slot_title', 'TestOther\TestOtherController@slot_title');
